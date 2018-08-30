@@ -9,7 +9,7 @@ export default class App extends React.Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route path='/' component={HomePage} />
+          <Route exact path='/' component={HomePage} />
           <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>

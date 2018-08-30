@@ -3,28 +3,26 @@
   "version": "1.0.0",
   "description": "Find good coffee now.",
   "main": "index.js",
-  "repository": "",
   "author": "Paul Mederos <paul@violetstack.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf assets/javascripts/bundled",
+    "clean": "rm -rf _public/bundled",
     "build": "yarn clean && webpack --display-error-details",
     "watch": "yarn clean && webpack --watch",
-    "sass": "sass assets/sass/core.scss:assets/css/styles.css --watch",
-    "start": "yarn watch"
+    "sass": "sass _public/assets/sass/core.scss:_public/assets/css/styles.css --watch",
+    "start": "yarn watch",
+    "server": "node server.js"
   },
   "dependencies": {
     "babel-preset-react": "^6.24.1",
     "express": "^4.16.3",
     "open": "^0.0.5",
-    "proptypes": "^1.1.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "serve-favicon": "^2.5.0",
     "webpack": "^3.6.0"
   },
   "devDependencies": {
