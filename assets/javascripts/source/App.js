@@ -1,13 +1,18 @@
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import HomePage from './components/pages/HomePage'
+import NotFoundPage from './components/pages/NotFoundPage'
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  
   render() {
+    console.log("Rendering App...")
     return (
-      <h1>Yo</h1>
+      <BrowserRouter>
+        <Switch>
+          <Route path='/' component={HomePage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
