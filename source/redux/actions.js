@@ -9,9 +9,10 @@ function requestShops(params) {
 
 export const RECEIVE_SHOPS = 'RECEIVE_SHOPS'
 function receiveShops(json) {
+  console.log("Received shops:", json)
   return {
     type: RECEIVE_SHOPS,
-    shops: json.data.children.map(child => child.data)
+    shops: json.coffeeShops
   }
 }
 
@@ -21,7 +22,7 @@ export function fetchShops(params) {
   // thus making it able to dispatch actions itself.
   return function (dispatch) {
     dispatch(requestShops(params))
-    return fetch(`https://www.reddit.com/r/fortnitebr.json`)
+    return fetch(`https://gist.githubusercontent.com/paulmederos/39c94e3381b6d16f712f43782715f897/raw/f607142f43ae4da6e3aa6d5fb5f0d6d005e8c8f2/coffee-shops.json`)
       .then(
         response => response.json(),
         // Do not use catch, because that will also catch

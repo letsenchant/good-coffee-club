@@ -3338,9 +3338,10 @@ const RECEIVE_SHOPS = 'RECEIVE_SHOPS';
 /* harmony export (immutable) */ __webpack_exports__["a"] = RECEIVE_SHOPS;
 
 function receiveShops(json) {
+  console.log("Received shops:", json);
   return {
     type: RECEIVE_SHOPS,
-    shops: json.data.children.map(child => child.data)
+    shops: json.coffeeShops
   };
 }
 
@@ -3350,7 +3351,7 @@ function fetchShops(params) {
   // thus making it able to dispatch actions itself.
   return function (dispatch) {
     dispatch(requestShops(params));
-    return fetch(`https://www.reddit.com/r/fortnitebr.json`).then(response => response.json(),
+    return fetch(`https://gist.githubusercontent.com/paulmederos/39c94e3381b6d16f712f43782715f897/raw/f607142f43ae4da6e3aa6d5fb5f0d6d005e8c8f2/coffee-shops.json`).then(response => response.json(),
     // Do not use catch, because that will also catch
     // any errors in the dispatch and resulting render,
     // causing a loop of 'Unexpected batch number' errors.
@@ -28468,31 +28469,60 @@ class HomePage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     console.log("Rendering HomePage w/ props...", this.props);
     return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
       'div',
-      null,
+      { className: 'HomePage' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'h1',
-        null,
-        'List of Coffee Shops'
+        'header',
+        { className: 'HomePage__Header' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'wrap' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+            className: 'SearchInput',
+            type: 'text',
+            value: this.props.searchInputText,
+            placeholder: 'Where are you looking?'
+          })
+        )
       ),
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'ul',
-        null,
-        this.props.shops && this.props.shops.map(shop => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'li',
-          null,
-          shop.title
-        )),
-        !this.props.shops && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'li',
-          null,
-          'No shops loaded yet'
-        )
+        'div',
+        { className: 'ResultsContainer wrap' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'ul',
+          { className: 'ResultsList' },
+          this.props.shops && this.props.shops.map(shop => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            { className: 'ResultCard' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'ResultPhoto', style: { backgroundImage: `url(https://picsum.photos/120/210/?random&key=${shop.name.substring(0, 3)})` } }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'h3',
+              null,
+              shop.name
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'p',
+              null,
+              shop.address1,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+              shop.city,
+              ', ',
+              shop.state
+            )
+          )),
+          this.props.shops && this.props.shops.length == 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'li',
+            null,
+            'Loading...'
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'ResultsMap' })
       )
     );
   }
 }
 
 function mapStateToProps(state, ownProps) {
+  console.log("Got state to map: ", state);
   return {
     shops: state.coffeeShops.shops
   };
