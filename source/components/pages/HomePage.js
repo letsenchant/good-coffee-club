@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'proptypes'
 import { connect } from 'react-redux';
 
+import ShopCard from 'components/molecules/ShopCard'
+
 class HomePage extends React.Component {
   render() {
     console.log("Rendering HomePage w/ props...", this.props)
@@ -20,11 +22,14 @@ class HomePage extends React.Component {
         <div className="ResultsContainer wrap">
           <ul className="ResultsList">
             { this.props.shops && this.props.shops.map(shop => (
-              <li className="ResultCard">
-                <div className="ResultPhoto" style={{ backgroundImage: `url(https://picsum.photos/120/210/?random&key=${shop.name.substring(0,3)})`}}></div>
-                <h3>{shop.name}</h3>
-                <p>{shop.address1}<br/>{shop.city}, {shop.state}</p>
-              </li>
+              <ShopCard
+                key={shop.name}
+                name={shop.name}
+                address1={shop.address1}
+                city={shop.city}
+                state={shop.state}
+                photoUrl={`https://picsum.photos/120/210/?random&key=${shop.name.substring(0,3)})`}
+              />
             ))}
             { this.props.shops && this.props.shops.length == 0 &&
               <li>Loading...</li>

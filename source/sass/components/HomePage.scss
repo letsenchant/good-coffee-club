@@ -51,43 +51,6 @@
   padding-left: 0;
 }
 
-.ResultCard {
-  list-style: none;
-  display: block;
-  flex-grow: 1;
-  flex-basis: 28%;
-  margin-right: 1.4rem;
-
-  @include mq-tablet { width: 48%; }
-  @include mq-personal { width: 100%; }
-
-  h3 {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #333;
-    font-family: $primary_font_stack;
-    margin-bottom: 4px;
-  }
-
-  P {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #666;
-    padding-bottom: 0;
-    line-height: 1.35;
-  }
-}
-
-.ResultPhoto {
-  height: 120px;
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  background-color: #fafafa;
-}
 
 .ResultsMap {
   display: block;
