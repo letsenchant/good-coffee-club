@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'proptypes'
 import { connect } from 'react-redux';
 
-import ShopCard from 'components/molecules/ShopCard'
+import ResultsList from 'components/organisms/ResultsList'
+import ResultsMap from 'components/organisms/ResultsMap'
 
 class HomePage extends React.Component {
   render() {
     console.log("Rendering HomePage w/ props...", this.props)
     return (
       <div className="HomePage">
-        <header className="HomePage__Header">
+        <header className="Header">
           <div className="wrap">
             <input
               className="SearchInput"
@@ -20,22 +21,8 @@ class HomePage extends React.Component {
           </div>
         </header>
         <div className="ResultsContainer wrap">
-          <ul className="ResultsList">
-            { this.props.shops && this.props.shops.map(shop => (
-              <ShopCard
-                key={shop.name}
-                name={shop.name}
-                address1={shop.address1}
-                city={shop.city}
-                state={shop.state}
-                photoUrl={`https://picsum.photos/120/210/?random&key=${shop.name.substring(0,3)})`}
-              />
-            ))}
-            { this.props.shops && this.props.shops.length == 0 &&
-              <li>Loading...</li>
-            }
-          </ul>
-          <div className="ResultsMap"></div>
+          <ResultsList shops={this.props.shops} />
+          <ResultsMap shops={this.props.shops} />
         </div>
       </div>
     )

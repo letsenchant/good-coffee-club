@@ -29172,7 +29172,9 @@ function verifySubselectors(mapStateToProps, mapDispatchToProps, mergeProps, dis
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_proptypes__ = __webpack_require__(126);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_proptypes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_proptypes__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_redux__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_components_molecules_ShopCard__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_components_organisms_ResultsList__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_components_organisms_ResultsMap__ = __webpack_require__(131);
+
 
 
 
@@ -29187,7 +29189,7 @@ class HomePage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       { className: 'HomePage' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'header',
-        { className: 'HomePage__Header' },
+        { className: 'Header' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: 'wrap' },
@@ -29202,24 +29204,8 @@ class HomePage extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         { className: 'ResultsContainer wrap' },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'ul',
-          { className: 'ResultsList' },
-          this.props.shops && this.props.shops.map(shop => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_components_molecules_ShopCard__["a" /* default */], {
-            key: shop.name,
-            name: shop.name,
-            address1: shop.address1,
-            city: shop.city,
-            state: shop.state,
-            photoUrl: `https://picsum.photos/120/210/?random&key=${shop.name.substring(0, 3)})`
-          })),
-          this.props.shops && this.props.shops.length == 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'li',
-            null,
-            'Loading...'
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'ResultsMap' })
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_components_organisms_ResultsList__["a" /* default */], { shops: this.props.shops }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_components_organisms_ResultsMap__["a" /* default */], { shops: this.props.shops })
       )
     );
   }
@@ -29811,6 +29797,68 @@ ShopCard.propTypes = {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (ShopCard);
+
+/***/ }),
+/* 130 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_proptypes__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_proptypes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_proptypes__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_components_molecules_ShopCard__ = __webpack_require__(129);
+
+
+
+
+const ResultsList = props => {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    'ul',
+    { className: 'ResultsList' },
+    props.shops && props.shops.map(shop => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_components_molecules_ShopCard__["a" /* default */], {
+      key: shop.name,
+      name: shop.name,
+      address1: shop.address1,
+      city: shop.city,
+      state: shop.state,
+      photoUrl: `https://picsum.photos/120/210/?random&key=${shop.name.substring(0, 3)})`
+    })),
+    props.shops && props.shops.length == 0 && __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      'li',
+      null,
+      'Loading...'
+    )
+  );
+};
+
+ResultsList.propTypes = {
+  shops: __WEBPACK_IMPORTED_MODULE_1_proptypes___default.a.array.isRequired
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (ResultsList);
+
+/***/ }),
+/* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_proptypes__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_proptypes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_proptypes__);
+
+
+
+const ResultsMap = props => {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'ResultsMap' });
+};
+
+ResultsMap.propTypes = {
+  shops: __WEBPACK_IMPORTED_MODULE_1_proptypes___default.a.array.isRequired
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (ResultsMap);
 
 /***/ })
 /******/ ]);
